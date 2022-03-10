@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<style>
+    #btn1{
+        background-color:saddlebrown;
+        color:white;
+       
+       
+    }
+    #btn2 {
+        background-color: saddlebrown;
+        color:white;
+    }
+    #div1,#div2
+    {
+       margin-left:350px;
+       position:center;
+        width:350px;
+    }
+</style>
+
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h3>Uvid u transakcije</h3></center>
+    <div id="div1">
+        @*<label>Pregled online transakcija </label>*@
+        @*<a asp-controller="Transakcije" asp-action="OnlineTransakcije" class="btn-info" style="margin-top:2em;">Pregledaj</a>*@
+        <a href="Transakcije/OnlineTransakcije">
+            <input type="button" value="Pregled online transakcija" id="btn1" style="height:80px; width:300px" />
+        </a>
+    </div>
+    <br />
+    <br />
+
+    @*<h3>Pregled transakcija - naručivanje robe za skladište</h3>
+        <a asp-controller="Transakcije" asp-action="SkladisteTransakcije" class="btn-info" style="margin-top:2em;">Pregledaj</a>*@
+<div id="div2">
+    <a href="Transakcije/SkladisteTransakcije">
+        <input type="button" value="Pregled transakcija za skladište" id="btn2" style="height:80px; width:300px" />
+    </a>
+
+</div>
+  
+
+
+
+</div>
+

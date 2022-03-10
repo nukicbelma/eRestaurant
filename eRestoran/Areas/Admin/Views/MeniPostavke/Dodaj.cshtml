@@ -1,0 +1,102 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Dodaj jelo";
+}
+@model eRestoran.Areas.Admin.ViewModels.JeloMeniDodajVM
+
+
+<div style="background-color:#f4f4f4;">
+    <center><h4 style="margin:0; padding:50px 0 70px 0; width:100%;">MENI POSTAVKE</h4></center>
+</div>
+
+
+
+
+<link href="/css/login.css" rel="stylesheet" />
+
+<div clas="row" style="margin:auto; margin-top:4em;">
+    <div style="background-color: #fff; opacity:0.9; margin:auto; width:500px;">
+        <h5 style="color:white; padding-top:30px; text-align:center; background-color:#1f1e1d; opacity:0.9; height:80px;"><b>Dodaj novu rezervaciju</b></h5>
+        <form asp-controller="MeniPostavke" asp-action="DodajSave" enctype="multipart/form-data" >
+
+            <input asp-for="JeloId" type="hidden" />
+
+
+            <div class="form-group">
+                <label>Cijena</label>
+                <input asp-for="Cijena" type="number" required="required" class="form-control" />
+                <span asp-validation-for="Cijena"></span>
+
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" asp-for="Naziv">
+                    Naziv
+                </label>
+
+                <input asp-for="Naziv" type="text" class="form-control" name="Naziv">
+                <span asp-validation-for="Naziv"></span>
+
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" asp-for="Opis">
+                    Opis
+                </label>
+
+                <input asp-for="Opis" type="text" class="form-control" name="Opis">
+                <span asp-validation-for="Opis"></span>
+
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" asp-for="StanjeNaSkladistu">
+                    Stanje na skladištu
+                </label>
+
+                <input asp-for="StanjeNaSkladistu" type="number" class="form-control" name="StanjeNaSkladistu">
+                <span asp-validation-for="StanjeNaSkladistu"></span>
+
+            </div>
+
+            @*<div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" asp-for="LinkZaSliku">
+                    Link za sliku
+                </label>
+
+                <input asp-for="LinkZaSliku" type="text" class="form-control">
+
+        </div>*@
+
+        <div class="form-group">
+            <label> Kategorija </label>
+            <select asp-for="Kategorija" asp-items="@Model.Kategorije" class="form-control"></select>
+            
+        </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" asp-for="LinkZaSliku">
+                    Izaberi sliku
+                </label>
+                <div class="custom-file">
+                    <input asp-for="LinkZaSliku" class="form-control custom-file-input" value="@Model.LinkZaSliku">
+                    <label class="custom-file-label" for="custom-file">Izaberi sliku...</label>
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+
+            <button type="submit" class="btn btn-primary">Spasi</button>
+
+
+
+        </form>
+    </div>
+</div>
+

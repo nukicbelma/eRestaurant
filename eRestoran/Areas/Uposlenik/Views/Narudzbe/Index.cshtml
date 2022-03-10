@@ -1,0 +1,78 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@model IEnumerable<eRestoran.Models.OnlineNarudzba>
+
+@{
+    ViewData["Title"] = "Prikaz narudžbi";
+}
+
+<link href="~/css/login.css" rel="stylesheet" />
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h2>Pregled narudžbi</h2></center>
+    @if (Model is null)
+    {
+        <center style="padding-top:50px; padding-bottom:50px;"><h5>Trenutno nema narudžbi</h5></center>
+    }
+    else
+    {
+        <table class="table" style="margin-top:2em;">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NazivJela)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Prezime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DatumNarudzbe)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cijena)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NazivJela)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Prezime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatumNarudzbe)
+                        </td>
+                        <td>
+                            @item.Cijena.ToString("0.00") KM
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="akcija">Detalji</a> |
+                            <a asp-action="Racun" asp-route-id="@item.Id" class="akcija">Printaj račun</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div id="container" style="margin-left: 20px">
+            <p></p>
+            <p></p>
+
+        </div>
+        <div class="pagination-lg" style="margin-left: 400px">
+
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Narudzbe", new { page, Area = "Uposlenik" }))
+        </div>
+    }
+</div>

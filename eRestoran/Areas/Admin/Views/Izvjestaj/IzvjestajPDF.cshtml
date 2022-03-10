@@ -1,0 +1,85 @@
+﻿  @model eRestoran.Areas.Admin.ViewModels.Izvjestaj.IzvjestajVM
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Izvještaj</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>KONZUM</th>
+            </tr>
+            <tr>
+                <th>Skladište ID</th>
+                <th>Količina</th>
+                <th>Nabavka ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.KonzumRows)
+            {
+                <tr>
+                    <td>@item.StavkaId</td>
+                    <td>@item.Kolicina</td>
+                    <td>@item.UlazUSkladisteID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>BARILA</th>
+            </tr>
+            <tr>
+                <th>Skladište ID</th>
+                <th>Količina</th>
+                <th>Nabavka ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.BarilaRows)
+            {
+            <tr>
+                <td>@item.StavkaId</td>
+                <td>@item.Kolicina</td>
+                <td>@item.UlazUSkladisteID</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>DIMAL</th>
+            </tr>
+            <tr>
+                <th>Skladište ID</th>
+                <th>Količina</th>
+                <th>Nabavka ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.DimalRows)
+            {
+            <tr>
+                <td>@item.StavkaId</td>
+                <td>@item.Kolicina</td>
+                <td>@item.UlazUSkladisteID</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+  
+  
+</body>
+</html>

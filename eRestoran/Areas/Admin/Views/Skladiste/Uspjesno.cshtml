@@ -1,0 +1,36 @@
+﻿@model eRestoran.Areas.Admin.ViewModels.Skladiste.SkladisteNarucenoVM
+
+<style>
+    #n{
+        position:center;
+        text-align:center;
+        font-family:'Times New Roman', Times, serif;
+        font-size:medium;
+        
+        
+    }
+</style>
+
+
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h2>Uspješno ste izvrišili sljedeću narudžbu :</h2></center>
+    <div id="n">
+        <label>Namirnica : @Model.Stavka</label>
+    </div>
+
+    <br />
+    <div id="n">
+        <label>Količina : @Model.Kolicina</label>
+    </div>
+   
+    <br />
+    <div id="n">
+        <label>Dobavljač : @Model.Dobavljac</label>
+    </div>
+   
+    <br />
+
+    <a asp-action="Index" asp-controller="Skladiste" class="btn btn-primary">Back</a>
+
+
+</div>

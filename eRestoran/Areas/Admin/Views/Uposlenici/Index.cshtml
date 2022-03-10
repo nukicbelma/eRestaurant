@@ -1,0 +1,76 @@
+﻿
+
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@model IEnumerable<eRestoran.Models.Uposlenik>
+
+@{
+    ViewData["Title"] = "Prikaz uposlenika";
+}
+
+<link href="~/css/login.css" rel="stylesheet" />
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h2>Pregled uposlenika</h2></center>
+    @if (Model is null)
+    {
+        <center style="padding-top:50px; padding-bottom:50px;"><h5>Trenutno nema uposlenika</h5></center>
+    }
+    else
+    {
+        <table class="table" style="margin-top:2em;">
+            <thead class="thead-light">
+                <tr>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Prezime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Titula)
+                    </th>
+                   
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                      
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Prezime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titula)
+                        </td>
+                       
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="akcija">Detalji</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="akcija">Obriši uposlenika</a> 
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+          <a asp-action="Create" class="textLogin" style="margin-top:2em;">Dodaj uposlenika</a>
+
+        <div id="container" style="margin-left: 20px">
+            <p></p>
+            <p></p>
+
+        </div>
+        <div class="pagination-lg" style="margin-left: 400px">
+
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Uposlenici", new { page, Area = "Admin" }))
+        </div>
+    }
+</div>
+
+

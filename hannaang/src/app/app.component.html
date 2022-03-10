@@ -1,0 +1,31 @@
+
+<input type="text" class="form-control w-25 p-10" placeholder="Pretraga po imenu uposlenika" (keyup)="onSearch($event)">
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Ime</th>
+    <th>Prezime</th>
+    <th>Ime i prezime</th>
+    <th>Titula</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="prikazUposlenika != null">
+  <tr *ngFor="let i of getUposlenici()">
+    <td>{{ i.id}}</td>
+    <td>{{ i.ime}}</td>
+    <td>{{ i.prezime}}</td>
+    <td>{{ i.imePrezime}}</td>
+    <td>{{ i.titula}}</td>
+    <td>
+      <button class="btn btn-warning" (click)="uredi(i)">Uredi</button>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div *ngIf="urediUposlenik!=null">
+  Ime uposlenika<input [(ngModel)]="urediUposlenik.ime"> <br>
+  Prezime uposlenika <input [(ngModel)]="urediUposlenik.prezime"> <br>
+  <button class="btn btn-warning" (click)="snimi()">Snimi</button>
+</div>

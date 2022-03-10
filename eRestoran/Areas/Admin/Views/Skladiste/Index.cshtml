@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<style>
+    #btn1 {
+        background-color: saddlebrown;
+        color: white;
+    }
+
+    #btn2 {
+        background-color: saddlebrown;
+        color: white;
+    }
+    #btn3 {
+        background-color: saddlebrown;
+        color: white;
+    }
+
+    #div1, #div2,#div3 {
+        margin-left: 350px;
+        position: center;
+        width: 350px;
+    }
+</style>
+
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h3>Podaci o skladištu</h3></center>
+    <div id="div1">
+
+        <a href="Skladiste/UlazUSkladiste">
+            <input type="button" value="Ulaz u skladište" id="btn1" style="height:80px; width:300px" />
+        </a>
+    </div>
+    <br />
+    <br />
+    <div id="div2">
+        <a href="Skladiste/PregledStanja">
+            <input type="button" value="Pregled stanja u skladištu" id="btn2" style="height:80px; width:300px" />
+        </a>
+
+    </div>
+    <br />
+    <br />
+    <div id="div3">
+        <a href="Skladiste/NaruciStavku">
+            <input type="button" value="Kreiraj narudžbu" id="btn3" style="height:80px; width:300px" />
+        </a>
+
+    </div>
+
+
+
+
+</div>
+

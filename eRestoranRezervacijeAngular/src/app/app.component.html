@@ -1,0 +1,29 @@
+
+<input type="text" class="form-control w-25 p-10"  placeholder="Pretraga po korisničkom imenu (gosta)" (keyup)="onSearch($event)">
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Broj osoba</th>
+    <th>Vrijeme rezervacije</th>
+    <th>Broj telefona</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="prikazRezervacija != null">
+  <tr *ngFor="let i of getRezervacije()">
+    <td>{{ i.id}}</td>
+    <td>{{ i.userName}}</td>
+    <td>{{ i.brojOsoba}}</td>
+    <td>{{ i.vrijemeRezervacije}}</td>
+    <td>{{ i.brojTelefona}}</td>
+    <td>
+      <button class="btn btn-warning" (click)="edit(i)">Uredi rezervaciju</button></td>
+  </tr>
+  </tbody>
+</table>
+<div *ngIf="editRezervacije!=null">
+  Id: <input [(ngModel)]="editRezervacije.id" readonly> <br>
+  Broj Osoba: <input [(ngModel)]="editRezervacije.brojOsoba"> <br>
+  <button class="btn btn-warning" (click)="snimi()">Snimi</button>
+</div>

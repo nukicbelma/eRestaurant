@@ -1,0 +1,42 @@
+﻿@model eRestoran.Areas.Admin.ViewModels.Rezervacije.RezervacijeCreteVM
+
+@{
+    ViewData["Title"] = "Upiši rezervaciju";
+}
+<link href="/css/login.css" rel="stylesheet" />
+
+<div clas="row" style="margin:auto; margin-top:4em;">
+    <div style="background-color: #fff; opacity:0.9; margin:auto; width:500px;">
+        <h5 style="color:white; padding-top:30px; text-align:center; background-color:#1f1e1d; opacity:0.9; height:80px;"><b>Dodaj novu rezervaciju</b></h5>
+        <form asp-controller="Rezervacije" asp-action="Dodaj" asp-area="Admin" class="formCreate" style="padding:0 3em 1.5em 3em;">
+         
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VrijemeRezervacije">Datum i vrijeme rezervacije:</label>
+                <input asp-for="VrijemeRezervacije" class="login-form-input" id="datum" placeholder="Datum rezervacije" />
+                
+            </div>
+            <div class="form-group">
+                <input asp-for="BrojOsoba" class="login-form-input" id="brOsoba" placeholder="Broj osoba"  /><div></div>
+                <span asp-validation-for="BrojOsoba" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input asp-for="BrojTelefona" class="login-form-input" id="konTelefon"  placeholder="Broj telefona"  /><div></div>
+                <span asp-validation-for="BrojTelefona" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="UserName" class="login-form-input" id="korIme" placeholder="Username"  /><div></div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Rezerviši" id="createRezervacija" class="textLogin" style="margin-left:22%;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+

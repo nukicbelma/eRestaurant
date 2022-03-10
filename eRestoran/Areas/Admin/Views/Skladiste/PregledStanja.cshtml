@@ -1,0 +1,37 @@
+﻿
+@model eRestoran.Areas.Admin.ViewModels.Skladiste.StavkaUlazaVM
+
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h2>Pregled stanja na skladištu</h2></center>
+
+    <table class="table" style="margin-top:2em;">
+        <thead class="thead-light">
+            <tr>
+                <th>ID stavke</th>
+                <th>Količina</th>
+                <th>ID jela</th>
+                <th>Naziv jela</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Rows)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Kolicina</td>
+                    <td>@item.MeniID</td>
+                    <td>@item.NazivJela</td>
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+
+</div>

@@ -1,0 +1,29 @@
+<input type="text" class="form-control w-25 p-10" placeholder="Pretraga po nazivu jela" (keyup)="onSearch($event)">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Narudzba ID</th>
+      <th>Naziv jela</th>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th>Datum narudzbe</th>
+      <th>Cijena</th>
+      <th>Adresa</th>
+      <th>Telefon</th>
+      <th>Akcija</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="prikazVM != null">
+    <tr *ngFor="let i of getStudenti()">
+      <td>{{i.narudzbaID}}</td>
+      <td>{{i.nazivJela}}</td>
+      <td>{{i.ime}}</td>
+      <td>{{i.prezime}}</td>
+      <td>{{i.datumNarudzbe}}</td>
+      <td>{{i.cijena}}</td>
+      <td>{{i.adresa}}</td>
+      <td>{{i.telefon}}</td>
+      <td><button type="button" (click)="deletePost(i.narudzbaID)">Obrisi</button></td>
+    </tr>
+  </tbody>
+</table>

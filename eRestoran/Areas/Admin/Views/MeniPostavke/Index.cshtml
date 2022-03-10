@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model eRestoran.Areas.Admin.ViewModels.JeloMeniVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div style="background-color:#f4f4f4;">
+    <center><h4 style="margin:0; padding:50px 0 70px 0; width:100%;">MENI POSTAVKE</h4></center>
+</div>
+
+<div id="MeniContainer">
+    @*<div class="sidebar">
+            <ul>
+
+
+                <li>
+                    <h4><span>Kategorije</span></h4>
+                    <ul class="blocklist">
+                        <li><a asp-action="Index" asp-controller="MeniPostavke" asp-route-naziv="Tjestenina">Tjestenina</a></li>
+                        <li><a asp-action="Index" asp-controller="MeniPostavke" asp-route-naziv="Sendvici">Sendviči</a></li>
+                        <li><a asp-action="Index" asp-controller="MeniPostavke" asp-route-naziv="Beefsteak">Beefsteak</a></li>
+                        <li><a asp-action="Index" asp-controller="MeniPostavke" asp-route-naziv="Schnitzel">Schnitzel</a></li>
+                        <li><a asp-action="Index" asp-controller="MeniPostavke" asp-route-naziv="Deserti">Deserti</a></li>
+
+                    </ul>
+                </li>
+
+
+            </ul>
+
+        </div>*@
+    <div class="MeniStavke">
+
+
+        @foreach (var x in Model.Rows)
+        {
+            var photoPath = "~/Images/" + x.LinkZaSliku;
+            <div class="responsive">
+                <div class="img">
+                    @*<img src="@x.LinkZaSliku" alt="Tacos" style="width:250px; height:170px;">*@
+
+                    @*<img id="slika" src="~/images/@x.LinkZaSliku" alt="" width="250px" height="170px" />*@
+                    
+                    <img id="myImg"  style="width:250px;height:170px;" alt="x" src="@photoPath" asp-append-version="true" />
+                    
+                    <div class="desc">
+                        <p style="font-size:1rem;">@x.Naziv - @x.Cijena KM </p>
+                        <a asp-action="Uredi" asp-controller="MeniPostavke" asp-route-id="@x.Id"><input type="button" value="Uredi" /></a>
+                        <a asp-action="Obrisi" asp-controller="MeniPostavke" asp-route-id="@x.Id"><input type="button" value="Obriši" /></a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <a asp-action="Dodaj" asp-controller="MeniPostavke">
+    <input type="button" value="Dodaj novo jelo na ponudu menija" class="btn btn-warning"/>
+    </a>
+</div>

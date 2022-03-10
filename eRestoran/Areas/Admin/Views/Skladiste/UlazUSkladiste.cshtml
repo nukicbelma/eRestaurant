@@ -1,0 +1,44 @@
+﻿
+@model eRestoran.Areas.Admin.ViewModels.Skladiste.UlazUSkladisteVM
+
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h2>Pregled prispjelih narudžbi za skladište</h2></center>
+
+    <table class="table" style="margin-top:2em;">
+        <thead class="thead-light">
+            <tr>
+                <th>Id skladišta</th>
+                <th>Ime dobavljača</th>
+                <th>Količina ulaza</th>
+                <th>Naziv</th>
+                <th>Uposlenik koji je primio narudžbu</th>
+
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Rows)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.ImeDobavljaca</td>
+                    <td>@item.KolicinaUlaza</td>
+                    <td>@item.Naziv</td>
+                    <td>@item.UposlenikID</td>
+
+
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="pdfbutton">
+        <a asp-action="IzvjestajPDF" asp-controller="Izvjestaj">Preuzmi izvještaj</a>
+    </div>
+
+</div>

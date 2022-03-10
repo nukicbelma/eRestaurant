@@ -1,0 +1,75 @@
+﻿@model eRestoran.Models.OnlineNarudzba
+
+@{
+    ViewData["Title"] = "Detalji narudžbe";
+}
+
+<link href="~/css/login.css" rel="stylesheet" />
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h3>@ViewData["Title"]</h3></center>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NazivJela)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NazivJela)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DatumNarudzbe)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DatumNarudzbe)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Cijena)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Cijena.ToString("0.00") KM
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Adresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Adresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+        @if (Model.DostavaNalog != null)
+        {
+            <dt class="col-sm-2">
+                Dostavljač
+            </dt>
+            <dd class="col-sm-10">
+                @Model.DostavaNalog.Uposlenik.ImePrezime
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DostavaNalog.VoziloZaDostavu)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DostavaNalog.VoziloZaDostavu.Naziv)
+            </dd>
+        }
+    </dl>
+
+    <div>
+        <a asp-action="Index" class="akcija">Lista narudžbi</a>
+    </div>
+
+</div>

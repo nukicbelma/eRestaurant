@@ -1,0 +1,48 @@
+﻿@model eRestoran.Areas.Admin.ViewModels.Uposlenici.UposleniciCreateVM
+
+@{
+    ViewData["Title"] = "Upiši uposlenika";
+}
+@*@using Microsoft.AspNetCore.Identity
+@{
+    IEnumerable<Restoran> Restorani = ViewBag.Restorani;
+}*@
+
+<link href="/css/login.css" rel="stylesheet" />
+
+<div class="row" style="margin:auto; margin-top:4em;">
+    <div style="background-color: #fff; opacity:0.9; margin:auto; width:500px;">
+        <h5 style="color:white; padding-top:30px; text-align:center; background-color:#1f1e1d; opacity:0.9; height:80px;"><b>Upis uposlenika</b></h5>
+        <form asp-action="Save" asp-area="Admin" class="formCreate" style="padding:0 3em 1.5em 3em;">
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <input asp-for="Ime" class="login-form-input" id="imeUposlenika" placeholder="Ime uposlenika" /><div></div>
+
+            </div>
+            <div class="form-group">
+                <input asp-for="Prezime" class="login-form-input" id="prezimeUposlenika" placeholder="Prezime uposlenika" /><div></div>
+
+            </div>
+
+            <div class="form-group">
+                <input asp-for="Titula" class="login-form-input" id="Titula" placeholder="Titula" /><div></div>
+
+            </div>
+          
+
+            
+            <div class="form-group">
+                <input type="submit" value="Dodaj" id="createUpsolenik" class="textLogin" style="margin-left:22%;" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@

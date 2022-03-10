@@ -1,0 +1,54 @@
+﻿
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@model eRestoran.Areas.Admin.ViewModels.Rezervacije.RezervacijeIndexVM
+
+@{
+    ViewData["Title"] = "Prikaz Rezervacija";
+}
+
+
+<link href="~/css/login.css" rel="stylesheet" />
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h2>Pregled rezervacija</h2></center>
+    @if (Model is null)
+    {
+        <center style="padding-top:50px; padding-bottom:50px;"><h5>Trenutno nema rezervacija</h5></center>
+        <center><a asp-action="Create" class="textLogin" style="margin-top:2em;">Kreiraj rezervaciju</a></center>
+    }
+    else
+    {
+        <table class="table" style="margin-top:2em;">
+            <thead class="thead-light">
+                <tr>
+                    <th>Broj osoba</th>
+                    <th>Vrijeme rezervacije</th>
+                    <th>Broj telefona</th>
+                    <th>Username</th>
+                    <th>Akcija</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Rows)
+                {
+                    <tr>
+                        <td>@item.BrojOsoba</td>
+                        <td>@item.VrijemeRezervacije</td>
+                        <td>@item.BrojTelefona</td>
+                        <td>@item.UserName</td>
+                        <td>
+                            @*<a asp-controller="Rezervacije" asp-action="Edit" asp-route-id="@item.RezervacijaId" class="akcija">Uredi</a> |*@
+                            <a asp-controller="Rezervacije" asp-action="Obrisi" asp-route-id="@item.RezervacijaId" class="akcija">Ukloni rezervaciju</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+       
+        <a asp-controller="Rezervacije" asp-action="Create" class="btn btn-warning"> Dodaj novu rezervaciju </a>
+     
+
+     
+    }
+</div>

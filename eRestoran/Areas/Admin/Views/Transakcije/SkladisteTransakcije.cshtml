@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "SkladisteTransakcije";
+}
+@model eRestoran.Areas.Admin.ViewModels.Transakcije.SkladisteTransakcijeVM
+
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h2>Pregled transakcija</h2></center>
+
+    <table class="table" style="margin-top:2em;">
+        <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Datum transakcije</th>
+                <th>Iznos</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Rows)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.DatumPrijema</td>
+                    <td>@item.Cijena KM</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

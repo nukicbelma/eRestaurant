@@ -1,0 +1,178 @@
+﻿@model OnlineNarudzba
+
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<OnlineGost> UserManager
+
+@{
+    IEnumerable<NarudzbaStavka> Stavke = ViewBag.Stavke;
+}
+
+
+@{
+    ViewData["Title"] = "Račun za narudžbu " + Model.Id;
+}
+
+<link href="~/css/login.css" rel="stylesheet" />
+<div style="background-color:#f4f4f4; min-height: 600px; padding: 3em;">
+    <center><h3>@ViewData["Title"]</h3></center>
+
+    <dl>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.DatumNarudzbe)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.DatumNarudzbe)
+        </dd>
+    </dl>
+
+    <div class="row">
+
+        <dl class="col-md-4">
+            <dt class="col-sm-6">
+                Naziv restorana
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Restoran.Naziv
+            </dd>
+            <dt class="col-sm-6">
+                Adresa restorana
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Restoran.Adresa
+            </dd>
+            <dt class="col-sm-6">
+                Broj telefona
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Restoran.Telefon
+            </dd>
+
+        </dl>
+
+        <dl class="col-md-4">
+            <dt class="col-sm-6">
+                Kupac
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Ime @Model.Prezime
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Adresa)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Adresa)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Telefon)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Telefon)
+            </dd>
+        </dl>
+    </div>
+
+    <table class="table" style="margin-top:2em;">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    Naziv stavke
+                </th>
+                <th>
+                    Cijena
+                </th>
+                <th>
+                    Količina
+                </th>
+                <th>
+                    Ukupno
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Stavke)
+            {
+                <tr>
+                    <td>
+                        @item.Meni.Naziv
+                    </td>
+                    <td>
+                        @item.Meni.Cijena.ToString("0.00") KM
+                    </td>
+                    <td>
+                        @item.Kolicina
+                    </td>
+                    <td>
+                        @((item.Meni.Cijena * int.Parse(item.Kolicina)).ToString("0.00")) KM
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <dl>
+            @if (ViewBag.Popust > 0)
+            {
+                <dt class="col-sm-6">
+                    Iznos bez popusta:
+                </dt>
+                <dd class="col-sm-6">
+                    @ViewBag.CijenaStavki.ToString("0.00") KM
+                </dd>
+                <dt class="col-sm-6">
+                    Popust:
+                </dt>
+                <dd class="col-sm-6">
+                    -@ViewBag.Popust.ToString("0.00") KM
+                </dd>
+            }
+
+            <dt class="col-sm-6">
+                Ukupni uznos:
+            </dt>
+            <dd class="col-sm-6">
+                @Model.Cijena.ToString("0.00") KM
+            </dd>
+        </dl>
+
+    </div>
+
+    <dl>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IzdavateljRačuna)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.IzdavateljRačuna != null)
+            {
+                <span>@Model.IzdavateljRačuna.Ime @Model.IzdavateljRačuna.Prezime</span>
+            }
+            else
+            {
+                var user = await UserManager.GetUserAsync(User);
+
+                <span>@user.Ime @user.Prezime</span>
+            }
+        </dd>
+    </dl>
+
+    @if (Model.IzdavateljRačuna == null)
+    {
+        <form asp-action="IzdajRacun" asp-route-id="@Model.Id">
+            <button class="btn btn-primary">Izdaj račun</button>
+        </form>
+    }
+    else
+    {
+        <button class="btn btn-primary d-print-none" onclick="window.print();">Printaj račun</button>
+    }
+
+    <div>
+        <a asp-action="Index" class="akcija d-print-none">Lista narudžbi</a>
+    </div>
+
+</div>
+
+@if (ViewBag.PrintajRacun == true)
+{
+    <script>window.print();</script>
+}
